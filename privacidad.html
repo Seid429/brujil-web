@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aviso de Privacidad - Brujil</title>
+  <link rel="icon" href="assets/branding/Asset%2010.svg" type="image/svg+xml">
+  <style>
+    /* ── FUENTES LOCALES ── */
+    @font-face {
+      font-family: 'Gourmet Le French Script';
+      src: url('assets/fonts/Gourmet%20Le%20French%20Script.otf') format('opentype');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'Monecias';
+      src: url('assets/fonts/Monecias%20Italic.otf') format('opentype');
+      font-weight: normal;
+      font-style: italic;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'Voster Typeface';
+      src: url('assets/fonts/Voster%20Font.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    /* ── VARIABLES ── */
+    :root {
+      --color-1-dark-brown: #382411;
+      --color-2-ochre:      #A0814A;
+      --color-3-olive:      #4F5848;
+      --color-4-warm-grey:  #B0AFA0;
+      --color-5-white:      #FFFFFF;
+
+      --font-script: 'Gourmet Le French Script', cursive;
+      --font-serif:  'Monecias', Georgia, serif;
+      --font-body:   'Voster Typeface', Arial, sans-serif;
+
+      --radius: 10px;
+      --ease:   0.3s ease;
+    }
+
+    /* ── RESET ── */
+    html, body {
+      overflow-x: hidden;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    *, *::before, *::after { box-sizing: inherit; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--color-5-white);
+      color: var(--color-1-dark-brown);
+      line-height: 1.8;
+      font-size: 1.05rem;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    h1, h2, h3 {
+      font-family: var(--font-serif);
+      font-style: italic;
+      line-height: 1.2;
+      color: var(--color-1-dark-brown);
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    p { 
+      opacity: 0.85; 
+      line-height: 1.8;
+      font-size: 1.05rem;
+      margin-bottom: 1.5rem;
+    }
+
+    ul {
+      margin-left: 1.5rem;
+      margin-bottom: 1.5rem;
+      opacity: 0.85;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+
+    strong {
+      color: var(--color-1-dark-brown);
+      opacity: 1;
+    }
+
+    blockquote {
+      border-left: 4px solid var(--color-2-ochre);
+      padding-left: 1rem;
+      margin-left: 0;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+      color: var(--color-3-olive);
+    }
+
+    /* ── UTILIDADES ── */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* ── HEADER ── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--color-5-white);
+      border-bottom: 1px solid rgba(160, 129, 74, 0.18);
+      box-shadow: 0 2px 18px rgba(56, 36, 17, 0.07);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem 5%;
+    }
+
+    .logo img {
+      height: 60px;
+      width: auto;
+      object-fit: contain;
+      border-radius: var(--radius);
+    }
+
+    /* ── LEGAL ── */
+    .legal-section {
+      padding: 5rem 0;
+    }
+
+    .legal-title {
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      margin-bottom: 1rem;
+      color: var(--color-1-dark-brown);
+      text-align: center;
+      margin-top: 0;
+    }
+
+    .legal-divider {
+      width: 60px;
+      height: 3px;
+      background: var(--color-2-ochre);
+      margin: 1.5rem auto 3rem auto;
+    }
+
+    @media (max-width: 768px) {
+      .container { padding: 0 15px; }
+      .legal-section { padding: 3rem 0; }
+      .legal-title { font-size: clamp(1.8rem, 8vw, 2.2rem); margin-bottom: 0.5rem; }
+      .legal-divider { margin: 1rem auto 2rem auto; }
+      h3 { font-size: 1.3rem; margin-top: 1.5rem; }
+      h4 { font-size: 1.1rem; margin-top: 1.2rem; }
+      p, li, blockquote { font-size: 1rem; line-height: 1.6; }
+      ul, ol { margin-left: 1.2rem; }
+      .nav-inner { padding: 0.8rem 15px; justify-content: center; }
+      .logo img { height: 45px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ════ HEADER ════ -->
+  <header>
+    <nav class="nav-inner" aria-label="Navegación principal">
+      <a href="index.html" class="logo" aria-label="Brujil — Volver al Inicio">
+        <img src="assets/branding/Asset%2010.svg" alt="Isotipo Brujil">
+      </a>
+    </nav>
+  </header>
+
+  <!-- ════ LEGAL ════ -->
+  <main class="legal-section">
+    <div class="container">
+      <h1 class="legal-title">Aviso de Privacidad</h1>
+      <div class="legal-divider"></div>
+
+      <p style="text-align: center;"><strong>Brujil — Taller Artesanal de Lácteos</strong><br>
+      <strong>Última actualización: Mayo de 2025</strong></p>
+      <div class="legal-divider"></div>
+
+      <h3>1. Identidad y Domicilio del Responsable</h3>
+      <p><strong>Brujil</strong> (en adelante, "el Responsable"), con domicilio en <strong>Calle 13 #282, entre 6 y 8, Colonia San Carlos Norte, C.P. 97130, Mérida, Yucatán, México</strong>, es el responsable del tratamiento de los datos personales que usted nos proporciona, de conformidad con lo establecido en la <strong>Ley Federal de Protección de Datos Personales en Posesión de los Particulares</strong> (LFPDPPP), su Reglamento y los lineamientos del Instituto Nacional de Transparencia, Acceso a la Información y Protección de Datos Personales (INAI).</p>
+      <p>Para cualquier consulta relacionada con el tratamiento de sus datos personales, puede contactarnos a través de los siguientes medios:</p>
+      <ul>
+        <li><strong>Correo electrónico:</strong> Contacto@brujil.com.mx</li>
+        <li><strong>WhatsApp:</strong> +52 999 654 2997</li>
+      </ul>
+
+      <h3>2. Datos Personales que Recabamos</h3>
+      <p>Para el cumplimiento de las finalidades descritas en el presente Aviso, el Responsable podrá recabar las siguientes categorías de datos personales:</p>
+      
+      <h4>Datos de Identificación y Contacto</h4>
+      <ul>
+        <li>Nombre completo</li>
+        <li>Número de teléfono celular (WhatsApp)</li>
+        <li>Dirección de correo electrónico</li>
+      </ul>
+
+      <h4>Datos de Logística y Entrega</h4>
+      <ul>
+        <li>Dirección de entrega (calle, número, colonia, referencias)</li>
+        <li>Indicaciones de acceso o notas especiales para la entrega</li>
+      </ul>
+
+      <h4>Datos de Facturación y Pago <em>(cuando aplique)</em></h4>
+      <ul>
+        <li>Razón social o nombre para facturación</li>
+        <li>Registro Federal de Contribuyentes (RFC)</li>
+        <li>Dirección fiscal</li>
+        <li>Información sobre el método de pago seleccionado (efectivo, tarjeta o transferencia)</li>
+      </ul>
+
+      <blockquote><strong>Importante:</strong> Brujil <strong>no recaba datos personales sensibles</strong> en los términos del Artículo 3, fracción VI de la LFPDPPP (tales como datos de salud, biométricos, religiosos o de vida sexual).</blockquote>
+
+      <h3>3. Finalidades del Tratamiento</h3>
+      
+      <h4>3.1 Finalidades Primarias <em>(necesarias para la relación comercial)</em></h4>
+      <p>Los datos personales recabados serán utilizados para:</p>
+      <ul>
+        <li>Procesar, confirmar y gestionar los pedidos realizados a través de nuestros canales de contacto (WhatsApp y correo electrónico).</li>
+        <li>Coordinar la logística de entrega a domicilio dentro de la Zona Norte de Mérida o la recolección en nuestro taller.</li>
+        <li>Comunicar información sobre el estatus, disponibilidad y fecha de entrega del pedido.</li>
+        <li>Realizar el cobro correspondiente mediante los métodos de pago disponibles.</li>
+        <li>Emitir comprobantes fiscales digitales (CFDI) cuando así se solicite.</li>
+        <li>Atender aclaraciones, quejas o solicitudes relacionadas con su pedido.</li>
+      </ul>
+
+      <h4>3.2 Finalidades Secundarias <em>(opcionales, no determinantes de la relación comercial)</em></h4>
+      <p>Con su consentimiento, y de manera adicional a las finalidades primarias, podríamos utilizar sus datos para:</p>
+      <ul>
+        <li>Enviarle información sobre la disponibilidad de nuevos lotes, temporadas y productos.</li>
+        <li>Compartir promociones, descuentos especiales o novedades del taller.</li>
+        <li>Realizar encuestas de satisfacción para mejorar nuestros productos y servicio.</li>
+      </ul>
+      <p>Si usted <strong>no desea</strong> que sus datos sean utilizados para estas finalidades secundarias, puede manifestarlo enviando un correo a <strong>Contacto@brujil.com.mx</strong> con el asunto <em>"Oposición a finalidades secundarias"</em> en cualquier momento, sin que ello afecte la atención de sus pedidos.</p>
+
+      <h3>4. Transferencia de Datos Personales</h3>
+      <p>Brujil <strong>no vende, cede ni transfiere</strong> sus datos personales a terceros sin su consentimiento previo, salvo en los casos previstos en el Artículo 37 de la LFPDPPP, que incluyen, entre otros:</p>
+      <ul>
+        <li>Cuando la transferencia esté prevista en una Ley o Tratado suscrito por México.</li>
+        <li>Cuando sea necesaria para la prevención o el diagnóstico médico, la prestación de asistencia sanitaria, o la gestión de servicios de salud.</li>
+        <li>Cuando la transferencia sea efectuada a sociedades controladoras, subsidiarias o afiliadas bajo el control común del Responsable, o a una sociedad matriz o a cualquier sociedad del mismo grupo del Responsable que opere bajo los mismos procesos y políticas internas.</li>
+        <li>Cuando la transferencia sea necesaria en virtud de un contrato celebrado o por celebrar en interés del titular, entre el Responsable y un tercero.</li>
+        <li>Cuando la transferencia sea necesaria o legalmente exigida para la salvaguarda de un interés público, o para la procuración o administración de justicia.</li>
+        <li>Cuando la transferencia sea precisa para el reconocimiento, ejercicio o defensa de un derecho en un proceso judicial.</li>
+        <li>Cuando la transferencia sea precisa para el mantenimiento o cumplimiento de una relación jurídica entre el Responsable y el titular.</li>
+      </ul>
+      <p>En caso de requerir la participación de un proveedor de servicios de entrega externo a futuro, se celebrarán contratos de tratamiento de datos que garanticen la protección de su información.</p>
+
+      <h3>5. Derechos ARCO: Acceso, Rectificación, Cancelación y Oposición</h3>
+      <p>Usted tiene el derecho de:</p>
+      <ul>
+        <li><strong>Acceso:</strong> Conocer qué datos personales tenemos de usted, para qué los utilizamos y las condiciones del uso que les damos.</li>
+        <li><strong>Rectificación:</strong> Solicitar la corrección de sus datos personales en caso de que estén desactualizados, sean inexactos o incompletos.</li>
+        <li><strong>Cancelación:</strong> Solicitar que eliminemos sus datos de nuestros registros o bases de datos cuando considere que no están siendo utilizados conforme a los principios, deberes y obligaciones establecidos en la normativa.</li>
+        <li><strong>Oposición:</strong> Oponerse al uso de sus datos personales para fines específicos.</li>
+      </ul>
+
+      <h4>Procedimiento para Ejercer sus Derechos ARCO</h4>
+      <p>Para ejercer cualquiera de estos derechos, deberá enviar una solicitud por escrito al correo electrónico <strong>Contacto@brujil.com.mx</strong> con el asunto <strong>"Solicitud ARCO"</strong>, incluyendo la siguiente información:</p>
+      <ol style="margin-left: 1.5rem; margin-bottom: 1.5rem; opacity: 0.85;">
+        <li>Nombre completo y datos de contacto del titular.</li>
+        <li>Una descripción clara y precisa de los datos personales sobre los que se pretende ejercer el derecho.</li>
+        <li>El derecho ARCO que desea ejercer (Acceso, Rectificación, Cancelación u Oposición).</li>
+        <li>En caso de Rectificación, indicar las modificaciones que se solicitan y aportar la documentación que sustente la petición.</li>
+        <li>Cualquier otro elemento o documento que facilite la localización de los datos personales.</li>
+      </ol>
+      <p>El Responsable tendrá un plazo de <strong>20 días hábiles</strong> contados desde la recepción de la solicitud para comunicarle la determinación adoptada, a efecto de que, si resulta procedente, se haga efectiva la misma dentro de los <strong>15 días hábiles</strong> siguientes a que se comunique la respuesta.</p>
+      <p>En caso de que la información proporcionada en la solicitud sea insuficiente o errónea, el Responsable podrá requerirle, dentro de los <strong>5 días hábiles</strong> siguientes a la recepción, que aporte los elementos o documentos necesarios para dar trámite a la misma.</p>
+
+      <h3>6. Revocación del Consentimiento</h3>
+      <p>Usted puede revocar el consentimiento que, en su caso, nos haya otorgado para el tratamiento de sus datos personales. Sin embargo, es importante que tenga en cuenta que no en todos los casos podremos atender su solicitud o concluir el uso de forma inmediata, ya que es posible que por alguna obligación legal requiramos seguir tratando sus datos personales.</p>
+      <p>Para revocar su consentimiento, deberá enviar una solicitud por escrito al correo <strong>Contacto@brujil.com.mx</strong> con el asunto <strong>"Revocación de Consentimiento"</strong>, siguiendo el mismo procedimiento descrito en la sección anterior.</p>
+
+      <h3>7. Uso de Cookies y Tecnologías de Rastreo</h3>
+      <p>En caso de que el sitio web de Brujil utilice cookies u otras tecnologías de rastreo, éstas serán empleadas únicamente para mejorar la experiencia de navegación y analizar el tráfico del sitio. No se utilizarán para recabar datos personales sensibles ni para elaborar perfiles comerciales sin su consentimiento. Se le informará oportunamente a través de un aviso en el sitio sobre el uso específico de estas tecnologías.</p>
+
+      <h3>8. Medidas de Seguridad</h3>
+      <p>El Responsable ha implementado las medidas de seguridad administrativas, técnicas y físicas que se consideran necesarias para proteger sus datos personales contra daño, pérdida, alteración, destrucción o uso no autorizado, acceso o tratamiento no permitido. El acceso a la información personal está restringido únicamente a quienes tienen necesidad de conocerla para el cumplimiento de sus funciones.</p>
+
+      <h3>9. Cambios al Aviso de Privacidad</h3>
+      <p>El Responsable se reserva el derecho de efectuar en cualquier momento modificaciones o actualizaciones al presente Aviso de Privacidad, en atención a novedades legislativas, políticas internas o nuevos requerimientos para la prestación u ofrecimiento de nuestros servicios o productos.</p>
+      <p>Estas modificaciones estarán disponibles al público a través de los canales de comunicación de Brujil (sitio web y/o WhatsApp). Se recomienda revisarlas periódicamente.</p>
+
+      <h3>10. Autoridad Competente</h3>
+      <p>Si usted considera que su derecho a la protección de datos personales ha sido lesionado por alguna conducta de nuestra parte, o presume que en el tratamiento de sus datos personales existe alguna violación a las disposiciones previstas en la LFPDPPP, podrá interponer la queja o denuncia correspondiente ante el <strong>INAI</strong> a través de su sitio web: <a href="https://www.inai.org.mx" target="_blank" style="color: var(--color-2-ochre);">www.inai.org.mx</a>.</p>
+
+      <p style="text-align: center; margin-top: 3rem;"><em>Brujil — Hecho con intención, sin prisas.</em><br>
+      <em>Domicilio: Calle 13 #282, entre 6 y 8, San Carlos Norte, C.P. 97130, Mérida, Yucatán, México.</em></p>
+
+    </div>
+  </main>
+
+</body>
+</html>

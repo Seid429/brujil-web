@@ -1,0 +1,1620 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Brujil — Taller artesanal de lácteos en Mérida, Yucatán. Sin aditivos, sin conservadores. Solo ingredientes naturales.">
+  <title>Brujil — Taller Artesanal de Lácteos</title>
+  <link rel="icon" href="assets/branding/Asset%2010.svg" type="image/svg+xml">
+
+  <style>
+    /* ── FUENTES LOCALES ── */
+    @font-face {
+      font-family: 'Gourmet Le French Script';
+      src: url('assets/fonts/Gourmet%20Le%20French%20Script.otf') format('opentype');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'Monecias';
+      src: url('assets/fonts/Monecias%20Italic.otf') format('opentype');
+      font-weight: normal;
+      font-style: italic;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'Voster Typeface';
+      src: url('assets/fonts/Voster%20Font.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    /* ── VARIABLES ── */
+    :root {
+      --color-1-dark-brown: #382411;
+      --color-2-ochre:      #A0814A;
+      --color-3-olive:      #4F5848;
+      --color-4-warm-grey:  #B0AFA0;
+      --color-5-white:      #FFFFFF;
+
+      --font-script: 'Gourmet Le French Script', cursive;
+      --font-serif:  'Monecias', Georgia, serif;
+      --font-body:   'Voster Typeface', Arial, sans-serif;
+
+      --radius: 10px;
+      --shadow: 0 4px 28px rgba(56, 36, 17, 0.10);
+      --ease:   0.3s ease;
+    }
+
+    /* ── RESET ── */
+    html, body {
+      overflow-x: hidden;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    *, *::before, *::after { box-sizing: inherit; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--color-5-white);
+      color: var(--color-1-dark-brown);
+      line-height: 1.8;
+      font-size: 1.05rem;
+    }
+
+    button, input, textarea, select, summary {
+      font-family: var(--font-body);
+      font-size: inherit;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* Monecias: Encabezados Principales */
+    h1, h2, h3, .section-title {
+      font-family: var(--font-serif);
+      font-style: italic;
+      line-height: 1.2;
+      color: var(--color-1-dark-brown);
+    }
+
+    /* Gourmet Le French: Detalles Decorativos */
+    .accent-text, .brand-signature {
+      font-family: var(--font-script);
+      font-style: normal;
+      font-weight: normal;
+      color: var(--color-2-ochre);
+      font-size: 1.4em;
+    }
+
+    /* Voster Typeface: Textos Legibles */
+    p { 
+      opacity: 0.85; 
+      line-height: 1.8;
+      font-size: 1.05rem;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: var(--radius);
+    }
+
+    /* ── UTILIDADES ── */
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .label {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--color-2-ochre);
+      margin-bottom: 0.75rem;
+    }
+
+    .divider {
+      width: 48px;
+      height: 2px;
+      background: var(--color-2-ochre);
+      border-radius: 2px;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ── BOTONES ── */
+    .btn {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-size: 0.82rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.85rem 2.25rem;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: background var(--ease), color var(--ease), transform var(--ease);
+    }
+
+    .btn-primary {
+      background: var(--color-2-ochre);
+      color: var(--color-5-white);
+      border: 2px solid var(--color-2-ochre);
+    }
+
+    .btn-primary:hover {
+      background: transparent;
+      color: var(--color-2-ochre);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--color-5-white);
+      border: 2px solid var(--color-2-ochre);
+      margin-left: 1rem;
+    }
+
+    .btn-outline:hover {
+      background: var(--color-2-ochre);
+      color: var(--color-5-white);
+      transform: translateY(-2px);
+    }
+
+    /* ════════════════════════════
+       HEADER
+    ════════════════════════════ */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--color-5-white);
+      border-bottom: 1px solid rgba(160, 129, 74, 0.18);
+      box-shadow: 0 2px 18px rgba(56, 36, 17, 0.07);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 5%;
+    }
+
+    .logo {
+      font-family: var(--font-script);
+      font-size: 2.2rem;
+      color: var(--color-1-dark-brown);
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .logo img.logo-img {
+      height: 46px;
+      width: auto;
+      object-fit: contain;
+      border-radius: 4px;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2.5rem;
+    }
+
+    .nav-links a {
+      font-family: var(--font-body);
+      font-size: 0.83rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-1-dark-brown);
+      transition: color var(--ease);
+      position: relative;
+      padding-bottom: 3px;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 2px;
+      background: var(--color-2-ochre);
+      border-radius: 2px;
+      transition: width var(--ease);
+    }
+
+    .nav-links a:hover { color: var(--color-2-ochre); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--color-1-dark-brown);
+      border-radius: 2px;
+      transition: var(--ease);
+    }
+
+    /* ════════════════════════════
+       HERO
+    ════════════════════════════ */
+    #inicio {
+      min-height: calc(100vh - 72px);
+      background: var(--color-1-dark-brown);
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #inicio::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 500px;
+      max-width: 90vw;
+      height: 500px;
+      max-height: 90vw;
+      background-image: url("assets/branding/Asset 10.svg");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      filter: brightness(0) invert(1); /* Convierte el SVG oscuro a blanco puro */
+      opacity: 0.15; /* Un blanco al 15% es un bajorrelieve perfecto y elegante */
+      z-index: -1;
+    }
+
+
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 5rem clamp(1.5rem, 5vw, 5rem);
+      max-width: 800px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #inicio .label {
+      color: var(--color-5-white);
+    }
+
+    #inicio .divider {
+      background: var(--color-2-ochre);
+    }
+
+    .hero-title {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      font-size: clamp(2.6rem, 5vw, 4.2rem);
+      margin: 0;
+      line-height: 1.3;
+      color: #FFFFFF;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+    }
+
+    .hero-title span {
+      font-family: var(--font-script);
+      font-style: normal;
+      color: var(--color-2-ochre);
+      font-size: 1.2em;
+      margin: 0;
+      line-height: 1.1;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .hero-text {
+      max-width: 600px;
+      margin: 0 auto 2.5rem auto;
+      font-size: 1.05rem;
+      line-height: 1.85;
+      color: #FFFFFF;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+    }
+
+    /* ════ UTILIDADES (Banners e Imágenes) ════ */
+    .banner-separator {
+      width: 100%;
+      height: 350px;
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+
+    .img-apoyo {
+      width: 100%;
+      object-fit: cover;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      margin-bottom: 2rem;
+    }
+
+    /* ════════════════════════════
+       QUIÉNES SOMOS
+    ════════════════════════════ */
+    #quienes-somos {
+      padding: 7rem 0;
+      background: var(--color-5-white);
+    }
+
+    .qs-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .qs-image {
+      position: relative;
+      height: 520px;
+    }
+
+    .qs-image::before {
+      content: '';
+      position: absolute;
+      inset: -14px 0 0 -14px;
+      border: 2px solid var(--color-2-ochre);
+      border-radius: var(--radius);
+      z-index: 0;
+    }
+
+    .qs-image img {
+      position: relative;
+      z-index: 1;
+      box-shadow: var(--shadow);
+    }
+
+    .qs-text h2 {
+      font-size: clamp(1.9rem, 3.5vw, 2.6rem);
+      margin-bottom: 1rem;
+    }
+
+    .qs-text > p {
+      font-size: 0.93rem;
+      line-height: 1.85;
+      margin-bottom: 2rem;
+    }
+
+    .mv-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+
+    .mv-card {
+      background: #FAF7F2;
+      border-top: 3px solid var(--color-2-ochre);
+      border-radius: 0 0 var(--radius) var(--radius);
+      padding: 1.4rem;
+    }
+
+    .mv-card h4 {
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-2-ochre);
+      margin-bottom: 0.5rem;
+    }
+
+    .mv-card p {
+      font-size: 0.85rem;
+      line-height: 1.75;
+    }
+
+    /* ════════════════════════════
+       VALORES
+    ════════════════════════════ */
+    #valores {
+      padding: 7rem 0;
+      background: var(--color-3-olive);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .watermark-sello {
+      position: absolute;
+      top: -20px;
+      right: -20px;
+      width: 200px;
+      opacity: 0.05;
+      pointer-events: none;
+    }
+
+    #valores .label { color: var(--color-4-warm-grey); }
+
+    #valores h2 {
+      font-size: clamp(1.9rem, 3.5vw, 2.6rem);
+      color: var(--color-5-white);
+      margin-bottom: 3rem;
+    }
+
+    .valores-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1.25rem;
+    }
+
+    .valor-card {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: var(--radius);
+      padding: 2rem 1.25rem;
+      text-align: center;
+      transition: transform var(--ease), background var(--ease);
+    }
+
+    .valor-card:hover {
+      transform: translateY(-6px);
+      background: rgba(255,255,255,0.13);
+    }
+
+    .icono-valor {
+      width: 45px;
+      height: 45px;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto 15px auto;
+    }
+
+    .valor-card h3 {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      color: var(--color-5-white);
+      margin-bottom: 0.6rem;
+    }
+
+    .valor-card p {
+      font-size: 0.8rem;
+      color: var(--color-4-warm-grey);
+      line-height: 1.7;
+      opacity: 1;
+    }
+
+    /* ════════════════════════════
+       FOOTER
+    ════════════════════════════ */
+    footer {
+      background: var(--color-1-dark-brown);
+      padding: 3.5rem 0 2rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 0.9rem;
+    }
+
+    .footer-logo {
+      font-family: var(--font-script);
+      font-size: 2.2rem;
+      color: var(--color-5-white);
+    }
+
+    .footer-tagline {
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-4-warm-grey);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      margin-top: 0.5rem;
+    }
+
+    .footer-links a {
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-4-warm-grey);
+      transition: color var(--ease);
+    }
+
+    .footer-links a:hover { color: var(--color-2-ochre); }
+
+    .footer-sep {
+      width: 36px; height: 1px;
+      background: rgba(176,175,160,0.25);
+      margin: 0.5rem auto;
+    }
+
+    .footer-copy {
+      font-size: 0.72rem;
+      color: var(--color-4-warm-grey);
+      opacity: 0.55;
+    }
+
+    .footer-legal {
+      margin-top: 0.75rem;
+    }
+
+    .footer-legal a {
+      color: var(--color-4-warm-grey);
+      text-decoration: none;
+      font-size: 0.75rem;
+      transition: color var(--ease);
+    }
+
+    .footer-legal a:hover {
+      color: var(--color-2-ochre);
+    }
+
+    /* ════════════════════════════
+       CATÁLOGO
+    ════════════════════════════ */
+    #catalogo {
+      padding: 7rem 0;
+      background: #FAF7F2;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #catalogo .section-header {
+      margin-bottom: 2rem;
+    }
+
+    #catalogo .section-header h2 {
+      font-size: clamp(1.9rem, 3.5vw, 2.6rem);
+    }
+
+    /* Pestañas de subcategoría */
+    .cat-tabs {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .cat-tab {
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.5rem 1.4rem;
+      border-radius: 50px;
+      border: 1px solid var(--color-2-ochre);
+      background: transparent;
+      color: var(--color-1-dark-brown);
+      cursor: pointer;
+      transition: background var(--ease), color var(--ease), border-color var(--ease);
+    }
+
+    .cat-tab.active,
+    .cat-tab:hover {
+      background: var(--color-1-dark-brown);
+      color: var(--color-5-white);
+      border-color: var(--color-1-dark-brown);
+    }
+
+    /* Grupos de productos */
+    .cat-group {
+      display: none;
+    }
+
+    .cat-group.active {
+      display: block;
+    }
+
+    .cat-group-title {
+      font-family: 'Gourmet Le French Script', cursive;
+      font-size: 3.5rem;
+      color: var(--color-1-dark-brown);
+      text-align: center;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid rgba(160,129,74,0.2);
+      padding-bottom: 0.75rem;
+      position: relative;
+    }
+
+    /* Grid de tarjetas */
+    .prod-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.75rem;
+      margin-bottom: 3rem;
+    }
+
+    .prod-card {
+      background: var(--color-5-white);
+      border: 1px solid rgba(160,129,74,0.22);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform var(--ease), box-shadow var(--ease);
+    }
+
+    .prod-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 36px rgba(56,36,17,0.14);
+    }
+
+    .prod-body {
+      padding: 2.5rem 2rem;
+      text-align: center;
+    }
+
+    .prod-category-tag {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-size: 0.65rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--color-2-ochre);
+      margin-bottom: 0.5rem;
+    }
+
+    .prod-name {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 1.3rem;
+      color: var(--color-1-dark-brown);
+      margin-bottom: 0.6rem;
+    }
+
+    .prod-perfil {
+      font-size: 0.82rem;
+      line-height: 1.75;
+      color: var(--color-1-dark-brown);
+      margin-bottom: 0.75rem;
+    }
+
+    .prod-ingredientes {
+      font-size: 0.75rem;
+      letter-spacing: 0.03em;
+      color: var(--color-3-olive);
+      margin-bottom: 1rem;
+    }
+
+    .prod-ingredientes strong {
+      text-transform: uppercase;
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      color: var(--color-4-warm-grey);
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+
+    .prod-precios {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      border-top: 1px solid rgba(160,129,74,0.15);
+      padding-top: 1rem;
+    }
+
+    .precio-tag {
+      background: rgba(160,129,74,0.1);
+      border: 1px solid rgba(160,129,74,0.3);
+      color: var(--color-1-dark-brown);
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      letter-spacing: 0.04em;
+      padding: 0.3rem 0.75rem;
+      border-radius: 50px;
+    }
+
+    /* ════════════════════════════
+       FAQ
+    ════════════════════════════ */
+    #faq {
+      padding: 7rem 0;
+      background: var(--color-5-white);
+    }
+
+    #faq .section-header {
+      margin-bottom: 3rem;
+    }
+
+    #faq .section-header h2 {
+      font-size: clamp(1.9rem, 3.5vw, 2.6rem);
+    }
+
+    .faq-list {
+      max-width: 780px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .faq-list details {
+      border-bottom: 1px solid rgba(160,129,74,0.2);
+    }
+
+    .faq-list details:first-of-type {
+      border-top: 1px solid rgba(160,129,74,0.2);
+    }
+
+    .faq-list summary {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1.4rem 0.25rem;
+      cursor: pointer;
+      font-family: var(--font-body);
+      font-style: normal;
+      font-size: 1.05rem;
+      color: var(--color-1-dark-brown);
+      transition: color var(--ease);
+      user-select: none;
+    }
+
+    .faq-list summary::-webkit-details-marker { display: none; }
+
+    .faq-list summary:hover {
+      color: var(--color-2-ochre);
+    }
+
+    .faq-list summary::after {
+      content: '+';
+      font-family: var(--font-body);
+      font-style: normal;
+      font-size: 1.4rem;
+      line-height: 1;
+      color: var(--color-2-ochre);
+      flex-shrink: 0;
+      transition: transform var(--ease);
+    }
+
+    .faq-list details[open] summary::after {
+      transform: rotate(45deg);
+    }
+
+    .faq-list details[open] summary {
+      color: var(--color-2-ochre);
+    }
+
+    .faq-answer {
+      padding: 0 0.25rem 1.4rem;
+      font-size: 0.9rem;
+      line-height: 1.85;
+      color: var(--color-1-dark-brown);
+      opacity: 0.82;
+      max-width: 660px;
+    }
+
+    /* ════ PAGOS Y ENVÍOS ════ */
+    #pagos-envios .pe-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin-top: 2rem;
+    }
+
+    .pe-col {
+      background: rgba(176,175,160, 0.15);
+      padding: 2.5rem;
+      border-radius: 4px;
+      border: 1px solid rgba(160,129,74, 0.2);
+    }
+
+    .pe-col h3 {
+      font-family: var(--font-serif);
+      font-style: italic;
+      color: var(--color-2-ochre);
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .pe-intro {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: var(--color-1-dark-brown);
+      opacity: 0.85;
+      margin-bottom: 2rem;
+    }
+
+    .pe-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .pe-list li {
+      display: block;
+    }
+
+    .pe-content h4 {
+      font-size: 1.05rem;
+      color: var(--color-1-dark-brown);
+      margin-bottom: 0.25rem;
+    }
+
+    .pe-content p {
+      font-size: 0.9rem;
+      color: var(--color-1-dark-brown);
+      opacity: 0.8;
+      line-height: 1.5;
+    }
+    
+    .pe-subblock {
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(160,129,74, 0.2);
+    }
+
+    /* ════ CONTACTO Y FOOTER ════ */
+    #contacto {
+      padding: 6rem 0 3rem;
+      background: var(--color-1-dark-brown);
+      color: var(--color-5-white);
+    }
+
+    #contacto .label {
+      color: var(--color-4-warm-grey);
+    }
+
+    #contacto .section-header h2 {
+      color: var(--color-2-ochre);
+    }
+
+    #contacto .divider {
+      background: var(--color-3-olive);
+    }
+
+    .contacto-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3rem;
+      margin-bottom: 4rem;
+    }
+
+    .contacto-col h3 {
+      font-family: var(--font-serif);
+      font-style: italic;
+      color: var(--color-2-ochre);
+      font-size: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .contacto-col p {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.85);
+      margin-bottom: 1rem;
+    }
+
+    .contacto-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--color-5-white);
+      font-size: 0.95rem;
+      text-decoration: none;
+      margin-bottom: 0.75rem;
+      transition: color var(--ease);
+    }
+
+    .contacto-link:hover {
+      color: var(--color-2-ochre);
+    }
+
+    .footer-bottom {
+      padding-top: 2rem;
+      border-top: 1px solid rgba(160, 129, 74, 0.2);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-logo {
+      font-family: var(--font-script);
+      font-size: 2rem;
+      color: var(--color-2-ochre);
+    }
+
+    .footer-copy {
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    /* ════════════════════════════
+       RESPONSIVE
+    ════════════════════════════ */
+    @media (max-width: 1024px) {
+      .valores-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    @media (max-width: 860px) {
+      #inicio { grid-template-columns: 1fr; }
+
+      .hero-content {
+        padding: 3.5rem 1.5rem 2rem;
+        text-align: center;
+      }
+
+      .hero-text { margin: 0 auto 2rem; }
+
+      .hero-image { height: 55vw; min-height: 260px; }
+      .hero-badge { display: none; }
+
+      .qs-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .qs-image { height: 320px; }
+      .qs-image::before { display: none; }
+
+      .mv-grid { grid-template-columns: 1fr; }
+      .pe-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .contacto-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 72px; left: 0; right: 0;
+        flex-direction: column;
+        background: var(--color-5-white);
+        padding: 1.5rem;
+        gap: 1.25rem;
+        box-shadow: 0 8px 24px rgba(56,36,17,0.10);
+        border-top: 1px solid rgba(160,129,74,0.15);
+      }
+
+      .nav-links.open { display: flex; }
+      .nav-toggle { display: flex; }
+
+      .btn-outline { margin-left: 0; margin-top: 0.75rem; }
+
+      .valores-grid { grid-template-columns: 1fr 1fr; }
+      .prod-grid { grid-template-columns: 1fr; }
+
+      .footer-links { flex-wrap: wrap; justify-content: center; gap: 1rem; }
+    }
+
+    @media (max-width: 420px) {
+      .valores-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      /* Tipografías y Espacios */
+      .hero-title { font-size: clamp(2rem, 7vw, 2.6rem); }
+      .hero-title span { font-size: 1em; }
+      h2, .section-header h2, .qs-text h2 { font-size: clamp(1.6rem, 6vw, 2rem); }
+      h3, .prod-name, .valor-card h3 { font-size: 1.15rem; }
+      .cat-group-title { font-size: 2.5rem; }
+      #quienes-somos, #valores, #catalogo, #faq, #pagos-envios, #contacto { padding: 3.5rem 0; }
+      .container { padding: 0 15px; }
+
+      /* Navbar */
+      .logo img { height: 40px !important; }
+      .nav-links {
+        display: none; position: absolute; top: 100%; left: 0; right: 0;
+        flex-direction: column; align-items: center; background: var(--color-5-white);
+        padding: 1.5rem; gap: 1.25rem; box-shadow: 0 8px 24px rgba(56, 36, 17, 0.10);
+        border-top: 1px solid rgba(160, 129, 74, 0.15);
+      }
+      .nav-links.open { display: flex; }
+      .nav-toggle { display: flex; }
+      .nav-inner { padding: 1rem 15px; }
+
+      /* Hero */
+      #inicio::before { width: 250px; height: 250px; }
+      .hero-content > div:last-of-type { display: flex; flex-direction: column; width: 100%; gap: 15px; }
+      .hero-content .btn { width: 100%; margin: 0; }
+
+      /* Catálogo */
+      .prod-grid { grid-template-columns: 1fr; }
+      .cat-tabs { flex-wrap: wrap; justify-content: center; }
+
+      /* Valores */
+      .valores-grid { grid-template-columns: 1fr; }
+      .watermark-sello { display: none; }
+      
+      /* Otras Grillas a 1 Columna */
+      .qs-grid, .mv-grid, .contacto-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .qs-image { height: 350px; }
+
+      /* Pagos & Envíos */
+      .pe-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+      .pe-col { width: 100%; padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ════ HEADER ════ -->
+  <header>
+    <nav class="nav-inner" aria-label="Navegación principal">
+
+      <a href="#inicio" class="logo" aria-label="Brujil — Inicio">
+        <img src="assets/branding/Asset%208.svg" alt="Logo Brujil" style="height: 55px; width: auto; object-fit: contain;">
+      </a>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#quienes-somos">¿Quiénes somos?</a></li>
+        <li><a href="#catalogo">Catálogo</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+
+      <button class="nav-toggle" id="nav-toggle"
+              aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+
+    </nav>
+  </header>
+
+  <!-- ════ HERO ════ -->
+  <section id="inicio">
+
+    <div class="hero-content">
+      <span class="label">Mérida, Yucatán · Desde el origen</span>
+      <div class="divider"></div>
+
+      <h1 class="hero-title">
+        Alimentos hechos
+        <span style="font-family: 'Monecias', serif; font-style: italic; color: var(--color-2-ochre);">con intención</span>
+        y sin prisas.
+      </h1>
+
+      <p class="hero-text">
+        Somos un taller artesanal ubicado en Mérida, Yucatán, dedicado a crear alimentos
+        con intención y sin prisas. Creemos en la pureza de los ingredientes: sin azúcares
+        añadidos, aditivos, colorantes ni conservadores. Solo ingredientes naturales.
+      </p>
+
+      <div>
+        <a href="#quienes-somos" class="btn btn-primary">Nuestra historia</a>
+        <a href="#catalogo" class="btn btn-outline">Ver catálogo</a>
+      </div>
+    </div>
+
+  </section>
+
+  <div class="banner-separator" style="background-image: url('assets/banners/Banner2.png');"></div>
+
+  <!-- ════ QUIÉNES SOMOS ════ -->
+  <section id="quienes-somos">
+    <div class="container">
+      <div class="qs-grid">
+
+        <div class="qs-image">
+          <img src="assets/imagenes/1.png" alt="El proceso artesanal de Brujil en Mérida, Yucatán">
+        </div>
+
+        <div class="qs-text">
+          <span class="label">¿Quiénes somos?</span>
+          <div class="divider"></div>
+          <h2>Nacimos del amor<br>por lo auténtico.</h2>
+          <p>
+            En Brujil creemos que el verdadero sabor nace del respeto al proceso.
+            Cada mantequilla, yogur y suero que elaboramos pasa por manos cuidadosas,
+            con ingredientes seleccionados de productores locales de Yucatán.
+          </p>
+
+          <div class="mv-grid">
+            <div class="mv-card">
+              <h4>Misión</h4>
+              <p>
+                Crear alimentos artesanales, naturales e intencionados para personas
+                que eligen un consumo consciente y responsable.
+              </p>
+            </div>
+            <div class="mv-card">
+              <h4>Visión</h4>
+              <p>
+                Consolidarnos como una marca de alimentos artesanales reconocida
+                por su excelencia, autenticidad y compromiso con la naturaleza.
+              </p>
+            </div>
+            <div class="mv-image" style="grid-column: 1 / -1; margin-top: 1.5rem;">
+              <img src="assets/imagenes/2.png" alt="Misión y Visión Brujil" class="img-apoyo">
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ VALORES ════ -->
+  <section id="valores">
+    <img src="assets/branding/Asset%206.svg" alt="Sello Brujil Decorativo" class="watermark-sello">
+    <div class="container">
+      <span class="label">Nuestra filosofía</span>
+      <h2>Valores</h2>
+
+      <div class="valores-grid">
+
+        <div class="valor-card">
+          <img src="assets/imagenes/icono-valor-1.png" alt="Integridad" class="icono-valor" onerror="this.style.display='none'">
+          <h3>Integridad</h3>
+          <p>Actuamos con coherencia entre lo que pensamos, decimos y hacemos en cada elaboración.</p>
+        </div>
+
+        <div class="valor-card">
+          <img src="assets/imagenes/icono-valor-2.png" alt="Responsabilidad" class="icono-valor" onerror="this.style.display='none'">
+          <h3>Responsabilidad</h3>
+          <p>Asumimos el impacto de nuestras decisiones sobre las personas, los animales y el entorno.</p>
+        </div>
+
+        <div class="valor-card">
+          <img src="assets/imagenes/icono-valor-3.png" alt="Respeto" class="icono-valor" onerror="this.style.display='none'">
+          <h3>Respeto</h3>
+          <p>Valoramos a nuestros productores, clientes y el entorno natural que hace posible nuestro trabajo.</p>
+        </div>
+
+        <div class="valor-card">
+          <img src="assets/imagenes/icono-valor-4.png" alt="Honestidad" class="icono-valor" onerror="this.style.display='none'">
+          <h3>Honestidad</h3>
+          <p>Transparencia en cada ingrediente. Sin etiquetas confusas ni ingredientes ocultos.</p>
+        </div>
+
+        <div class="valor-card">
+          <img src="assets/imagenes/icono-valor-5.png" alt="Confianza" class="icono-valor" onerror="this.style.display='none'">
+          <h3>Confianza</h3>
+          <p>Construimos relaciones duraderas con nuestra comunidad basadas en consistencia y calidad real.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="banner-separator" style="background-image: url('assets/banners/Banner3.png');"></div>
+
+  <!-- ════ CATÁLOGO ════ -->
+  <section id="catalogo">
+    <div class="container">
+
+      <div class="section-header">
+        <span class="label">Nuestros productos</span>
+        <div class="divider"></div>
+        <h2>Elaborados con cuidado,<br>pensados para ti.</h2>
+        
+        <div style="text-align: center; margin: 2rem 0;">
+          <img src="assets/branding/Asset%207.svg" alt="Brujil Slogan" style="max-width: 250px; width: 100%; height: auto; object-fit: contain; margin: 0 auto;">
+        </div>
+
+        <div class="cat-tabs" role="tablist" aria-label="Categorías del catálogo">
+          <button class="cat-tab active" role="tab" aria-selected="true"
+                  onclick="switchTab(event,'cat-mantequillas')">Mantequillas</button>
+          <button class="cat-tab" role="tab" aria-selected="false"
+                  onclick="switchTab(event,'cat-yogures')">Yogures</button>
+          <button class="cat-tab" role="tab" aria-selected="false"
+                  onclick="switchTab(event,'cat-sueros')">Sueros</button>
+        </div>
+      </div>
+
+      <!-- MANTEQUILLAS -->
+      <div class="cat-group active" id="cat-mantequillas">
+        <p class="cat-group-title">Mantequillas</p>
+        <p class="prod-perfil" style="margin-bottom: 2rem;">Elaboradas mediante batido tradicional de crema fresca hasta la inversión de fases.</p>
+        <div class="prod-grid">
+
+          <article class="prod-card">
+            <div class="prod-body">
+              <span class="prod-category-tag">Mantequilla</span>
+              <h3 class="prod-name">Natural</h3>
+              <p class="prod-perfil"><strong>Perfil:</strong> Textura sedosa y aroma lácteo profundo.</p>
+              <div class="prod-ingredientes">
+                <strong>Ingredientes</strong>
+                Crema de leche de vaca pasteurizada y cultivos lácticos.
+              </div>
+              <div class="prod-precios">
+                <span class="precio-tag">250 g — $80</span>
+                <span class="precio-tag">500 g — $160</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="prod-card">
+            <div class="prod-body">
+              <span class="prod-category-tag">Mantequilla</span>
+              <h3 class="prod-name">Aromática</h3>
+              <p class="prod-perfil"><strong>Perfil:</strong> Base artesanal infusionada en frío con ajos rostizados lentamente y botánicos frescos. Finalizado con cristales de sal de mar.</p>
+              <div class="prod-ingredientes">
+                <strong>Ingredientes</strong>
+                Crema de leche, cultivos lácticos, ajo, hierbas aromáticas y sal de mar.
+              </div>
+              <div class="prod-precios">
+                <span class="precio-tag">100 g — $50</span>
+                <span class="precio-tag">250 g — $100</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+
+      <!-- YOGURES -->
+      <div class="cat-group" id="cat-yogures">
+        <p class="cat-group-title">Yogures</p>
+        <p class="prod-perfil" style="margin-bottom: 2rem;">Fermentación lenta con cultivos vivos que transforman la estructura original del lácteo.</p>
+        <div class="prod-grid">
+
+          <article class="prod-card">
+            <div class="prod-body">
+              <span class="prod-category-tag">Yogur</span>
+              <h3 class="prod-name">Natural</h3>
+              <p class="prod-perfil"><strong>Perfil:</strong> Fluidez y acidez equilibrada. Notas lácteas naturales sin aditivos.</p>
+              <div class="prod-ingredientes">
+                <strong>Ingredientes</strong>
+                Leche entera pasteurizada y cultivos lácticos (probióticos).
+              </div>
+              <div class="prod-precios">
+                <span class="precio-tag">500 ml — $60</span>
+                <span class="precio-tag">1 L — $120</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="prod-card">
+            <div class="prod-body">
+              <span class="prod-category-tag">Yogur</span>
+              <h3 class="prod-name">Griego</h3>
+              <p class="prod-perfil"><strong>Perfil:</strong> Densidad aterciopelada y estructura firme. Perfil aromático profundo.</p>
+              <div class="prod-ingredientes">
+                <strong>Técnica</strong>
+                Desuerado artesanal por gravedad. Concentración natural de proteínas sin espesantes.
+              </div>
+              <div class="prod-ingredientes">
+                <strong>Ingredientes</strong>
+                Leche entera pasteurizada y cultivos lácticos (probióticos).
+              </div>
+              <div class="prod-precios">
+                <span class="precio-tag">500 ml — $80</span>
+                <span class="precio-tag">1 L — $160</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+
+      <!-- SUEROS -->
+      <div class="cat-group" id="cat-sueros">
+        <p class="cat-group-title">Sueros</p>
+        <p class="prod-perfil" style="margin-bottom: 2rem;">En Brujil honramos el ciclo completo de la materia. Los sueros son elixires obtenidos directamente de la elaboración artesanal de nuestros yogures y mantequillas, conservando propiedades únicas.</p>
+        <div class="prod-grid">
+
+          <article class="prod-card">
+            <div class="prod-body">
+              <span class="prod-category-tag">Suero</span>
+              <h3 class="prod-name">Suero de Yogur (Ácido)</h3>
+              <p class="prod-perfil"><strong>Perfil:</strong> Destilado translúcido de frescura vibrante y notas aciduladas.</p>
+              <div class="prod-ingredientes">
+                <strong>Funcionalidad</strong>
+                Fuente de proteínas de alta biodisponibilidad y electrolitos naturales. Ideal para hidratación profunda, batidos funcionales o activación de granos.
+              </div>
+              <div class="prod-ingredientes">
+                <strong>Origen</strong>
+                Obtenido durante el filtrado natural de nuestro yogur griego.
+              </div>
+              <div class="prod-precios">
+                <span class="precio-tag">500 ml — $60</span>
+                <span class="precio-tag">1 L — $120</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="prod-card">
+            <div class="prod-body">
+              <span class="prod-category-tag">Suero</span>
+              <h3 class="prod-name">Suero de Mantequilla (Buttermilk)</h3>
+              <p class="prod-perfil"><strong>Perfil:</strong> Textura ligera y perfil aromático limpio. Un retorno al ingrediente auténtico.</p>
+              <div class="prod-ingredientes">
+                <strong>Funcionalidad</strong>
+                Acondicionador natural de masas. Su acidez reacciona con agentes leudantes para crear texturas de miga excepcionalmente suaves y esponjosas.
+              </div>
+              <div class="prod-ingredientes">
+                <strong>Origen</strong>
+                Obtenido durante el batido y separación de la grasa de nuestra mantequilla.
+              </div>
+              <div class="prod-precios">
+                <span class="precio-tag">500 ml — $80</span>
+                <span class="precio-tag">1 L — $160</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="banner-separator" style="background-image: url('assets/banners/Banner4.png');"></div>
+
+  <!-- ════ PAGOS Y ENVÍOS ════ -->
+  <section id="pagos-envios">
+    <div class="container">
+
+      <div class="section-header">
+        <span class="label">Información importante</span>
+        <div class="divider"></div>
+        <h2>Pagos & Envíos</h2>
+      </div>
+
+      <div class="pe-grid">
+
+        <!-- Bloque 1: Formas de pago -->
+        <div class="pe-col">
+          <h3>Formas de pago</h3>
+          <p class="pe-intro">Para tu comodidad y seguridad, el pago se realiza al recibir tu pedido (contra entrega), ya sea en nuestro taller o en tu domicilio.</p>
+
+          <ul class="pe-list">
+            <li>
+              <div class="pe-content">
+                <p><strong>Efectivo.</strong></p>
+              </div>
+            </li>
+            <li>
+              <div class="pe-content">
+                <p><strong>Tarjeta de Crédito y Débito:</strong> Procesado al momento mediante terminal móvil.</p>
+              </div>
+            </li>
+            <li>
+              <div class="pe-content">
+                <p><strong>Transferencia Electrónica:</strong> Realizada al recibir tus productos (te proporcionaremos los datos bancarios al confirmar el pedido).</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Bloque 2: Logística de Entrega -->
+        <div class="pe-col">
+          <h3>Logística de Entrega</h3>
+          <p class="pe-intro">En Brujil operamos bajo un esquema de producción artesanal programada para garantizar la frescura de cada producto.</p>
+
+          <ul class="pe-list">
+            <li>
+              <div class="pe-content">
+                <h4>Envío a Domicilio (Zona Norte)</h4>
+                <p>Contamos con servicio de entrega en la zona norte de la ciudad de Mérida.</p>
+                <p style="margin-top:0.5rem;"><strong>Proceso:</strong> Al realizar tu pedido, solicitaremos tu ubicación para confirmar la cobertura y el costo de envío. Te notificaremos el día y rango de horario estimado para tu entrega.</p>
+              </div>
+            </li>
+            <li class="pe-subblock">
+              <div class="pe-content">
+                <h4>Recolección en Taller (Pick-up Point)</h4>
+                <p>Si lo prefieres, puedes recolectar tu pedido en nuestro taller con previa cita.</p>
+                <p style="margin-top:0.5rem;"><strong>Ubicación:</strong> Calle 13 #282, entre 6 y 8, San Carlos Norte, C.P. 97130, Mérida, Yucatán, México.</p>
+                <p style="margin-top:0.5rem;"><strong>Horarios de entrega:</strong> De jueves a domingo, según la disponibilidad de lotes artesanales.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <div class="banner-separator" style="background-image: url('assets/banners/Banner5.png');"></div>
+
+  <!-- ════ FAQ ════ -->
+  <section id="faq">
+    <div class="container">
+
+      <div class="section-header">
+        <span class="label">Resolvemos tus dudas</span>
+        <div class="divider"></div>
+        <h2>Preguntas<br>frecuentes.</h2>
+      </div>
+
+      <div class="faq-list">
+
+        <details>
+          <summary>¿Qué significa que los alimentos sean "intencionados"?</summary>
+          <p class="faq-answer">
+            Significa que en Brujil no solo seguimos una receta; ponemos conciencia y propósito en cada paso del proceso. Elaboramos nuestros productos de forma artesanal, respetando los tiempos naturales de fermentación y batido, con el objetivo de aportar bienestar y energía positiva a los alimentos que producimos.
+          </p>
+        </details>
+
+        <details>
+          <summary>¿Los productos de Brujil son “Sin Azúcar” (Sugar Free)?</summary>
+          <p class="faq-answer">
+            No, en Brujil respetamos la esencia de nuestros ingredientes, por lo que no los sometemos a procesos para eliminar aquello que contienen de manera natural, como la lactosa, el azúcar natural de la leche.
+          </p>
+        </details>
+
+        <details>
+          <summary>¿Qué significa que los alimentos sean sin “azúcares añadidos”?</summary>
+          <p class="faq-answer">
+            Significa que no agregamos ningún tipo de azúcar o endulzante (miel, jarabe, etc.) en el proceso de elaboración. El azúcar que aparece en la tabla nutricional de algunos productos es la lactosa, el azúcar que la leche contiene de forma natural.
+          </p>
+        </details>
+
+        <details>
+          <summary>¿Sus productos son aptos para personas con intolerancia a la lactosa?</summary>
+          <p class="faq-answer">
+            Nuestros productos contienen lactosa de manera natural, ya que no utilizamos procesos químicos para extraerla. Sin embargo, gran parte de esa lactosa es transformada durante la fermentación artesanal haciéndolos más digeribles. Si tu sensibilidad es leve, podrías disfrutarlos sin problema, aunque siempre te recomendamos sentir y escuchar tu cuerpo.
+          </p>
+        </details>
+
+        <details>
+          <summary>¿Cuánto tiempo duran los productos?</summary>
+          <p class="faq-answer">
+            Nuestros productos son artesanales y no contienen conservadores por lo que su vida útil es diferente a la de los productos industriales:<br><br>
+            1. <strong>Mantequillas</strong> (natural y aromática): 3-4 semanas en refrigeración (congeladas pueden durar hasta 3 meses)<br>
+            2. <strong>Yogur</strong> (natural y griego): 10 a 14 días en refrigeración<br>
+            3. <strong>Sueros:</strong> 7 a 10 días en refrigeración.
+          </p>
+        </details>
+
+        <details>
+          <summary>¿Cómo se deben conservar?</summary>
+          <p class="faq-answer">
+            Para mantener la magia y frescura de Brujil, es indispensable mantener todos los productos en refrigeración (entre 2°C y 4°C). Te recomendamos usar utensilios limpios para servirlos y cerrarlos de manera hermética para evitar su contaminación.
+          </p>
+        </details>
+
+        <details>
+          <summary>¿Sus envases son reutilizables o retornables?</summary>
+          <p class="faq-answer">
+            Nuestros envases son de vidrio para preservar la pureza y el sabor de los alimentos. Te invitamos a darles una segunda vida en tu hogar o a retornarlos limpios en tu próximo pedido. Al hacerlo, cerramos juntos un ciclo de respeto por nuestro entorno y reducimos nuestra huella en el planeta.
+          </p>
+        </details>
+
+        <details>
+          <summary>¿Hacen envíos a domicilio?</summary>
+          <p class="faq-answer">
+            Sí, contamos con servicio de entrega en la zona norte de Mérida. Al momento de hacer tu pedido, compártenos tu ubicación para confirmarte el costo de envío y el día programado para tu entrega.
+          </p>
+        </details>
+
+        <details>
+          <summary>¿Cómo puedo hacer un pedido?</summary>
+          <p class="faq-answer">
+            ¡Es muy sencillo! Puedes enviar la lista de productos que deseas. Una vez confirmada la disponibilidad, te proporcionaremos los datos para realizar tu pago. Aceptamos pagos en efectivo, con tarjeta y por transferencia.
+          </p>
+        </details>
+
+        <details>
+          <summary>¿Tienen tienda física?</summary>
+          <p class="faq-answer">
+            Por el momento operamos como un taller artesanal con entregas programadas.
+          </p>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="banner-separator" style="background-image: url('assets/banners/Banner6.png');"></div>
+
+  <!-- ════ CONTACTO / FOOTER ════ -->
+  <footer id="contacto">
+    <div class="container">
+
+      <div class="section-header">
+        <span class="label">Estamos cerca de ti</span>
+        <div class="divider"></div>
+        <h2>Contacto</h2>
+      </div>
+
+      <div class="contacto-grid">
+        
+        <!-- Bloque 1: Atención Directa -->
+        <div class="contacto-col">
+          <h3>Atención Directa</h3>
+          <p>Para realizar pedidos, consultar disponibilidad de lotes o solicitar asistencia personalizada, puedes encontrarnos en nuestros canales oficiales:</p>
+          <a href="https://wa.me/529996542997" class="contacto-link" target="_blank" rel="noopener">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--color-2-ochre)" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.888-.788-1.489-1.761-1.663-2.06-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.82 9.82 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.81 11.81 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.88 11.88 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.82 11.82 0 0 0-3.48-8.413Z"/></svg>
+            999 654 2997
+          </a><br>
+          <a href="mailto:Contacto@brujil.com.mx" class="contacto-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--color-2-ochre)" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4.236-8 5.06-8-5.06V6l8 5.06 8-5.06v2.236z"/></svg>
+            Contacto@brujil.com.mx
+          </a>
+        </div>
+
+        <!-- Bloque 2: Redes Sociales -->
+        <div class="contacto-col">
+          <h3>Redes Sociales</h3>
+          <p>Sigue de cerca nuestros procesos artesanales y lanzamientos de nuevos productos:</p>
+          <a href="https://www.instagram.com/brujil.mid" class="contacto-link" target="_blank" rel="noopener">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--color-2-ochre)" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            @brujil.mid
+          </a><br>
+          <a href="https://www.facebook.com/brujil.com.mx" class="contacto-link" target="_blank" rel="noopener">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--color-2-ochre)" xmlns="http://www.w3.org/2000/svg"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg>
+            brujil.com.mx
+          </a>
+        </div>
+
+        <!-- Bloque 3: Ubicación del Taller -->
+        <div class="contacto-col">
+          <h3>Ubicación del Taller</h3>
+          <p>Dirección: Calle 13, número 282, entre 6 y 8, San Carlos Norte, C.P. 97130, Mérida, Yucatán, México.</p>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-logo" style="flex-basis: 100%; text-align: center; margin-bottom: 2rem;">
+          <img src="assets/branding/Asset%209.svg" alt="Brujil Logo Vertical" style="height: 140px; width: auto; object-fit: contain; margin: 0 auto;">
+        </div>
+        <div class="footer-copy">© 2026 Brujil. Todos los derechos reservados.</div>
+        <div class="footer-legal">
+          <a href="privacidad.html" target="_blank">Aviso de Privacidad</a>
+          <span style="color: var(--color-4-warm-grey); opacity: 0.5; margin: 0 0.5rem;">|</span>
+          <a href="terminos.html" target="_blank">Términos y Condiciones</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ════ SCRIPTS ════ -->
+  <script>
+    /* ── Menú hamburguesa ── */
+    var toggle = document.getElementById('nav-toggle');
+    var links  = document.getElementById('nav-links');
+
+    toggle.addEventListener('click', function () {
+      var open = links.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open);
+    });
+
+    links.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        links.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    /* ── Pestañas del catálogo ── */
+    function switchTab(e, groupId) {
+      // Actualiza botones
+      document.querySelectorAll('.cat-tab').forEach(function (btn) {
+        btn.classList.remove('active');
+        btn.setAttribute('aria-selected', 'false');
+      });
+      e.currentTarget.classList.add('active');
+      e.currentTarget.setAttribute('aria-selected', 'true');
+
+      // Muestra el grupo correcto
+      document.querySelectorAll('.cat-group').forEach(function (g) {
+        g.classList.remove('active');
+      });
+      document.getElementById(groupId).classList.add('active');
+    }
+  </script>
+
+</body>
+</html>
