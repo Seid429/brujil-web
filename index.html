@@ -1057,11 +1057,12 @@
         background-size: contain;
         background-position: center center;
         background-repeat: no-repeat;
-        background-color: var(--color-1-dark-brown);
+        background-color: #0a0a0a; /* Fondo muy oscuro para las áreas sin imagen */
+        background-attachment: scroll; /* Asegura que se mueva con el scroll en móvil y evita glitches del fixed */
         height: 250px;
       }
 
-      /* Superponemos el degradado usando un pseudo-elemento para respetar las imágenes en línea del HTML */
+      /* Superponemos el degradado profundo para enmascarar errores y mejorar el contraste */
       .banner-separator::before {
         content: "";
         position: absolute;
@@ -1071,10 +1072,10 @@
         height: 100%;
         background: linear-gradient(
           to bottom, 
-          var(--color-1-dark-brown) 0%, 
-          transparent 20%, 
-          transparent 80%, 
-          var(--color-1-dark-brown) 100%
+          rgba(0,0,0,0.85) 0%, 
+          rgba(0,0,0,0.3) 20%, 
+          rgba(0,0,0,0.3) 80%, 
+          rgba(0,0,0,0.85) 100%
         );
         pointer-events: none; /* Para no bloquear clics si hubiera contenido */
       }
